@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRD Weight Data: 10x13 Poly Mailer (T-Shirt) (10x13x0.1) - Compliance Code & Fees</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col items-center py-10 px-4">
+
+    <main class="w-full max-w-2xl bg-white shadow-lg rounded-xl border border-slate-200 overflow-hidden">
+        
+        <!-- Header -->
+        <header class="bg-slate-850 text-white p-6 border-b border-slate-700">
+            <!-- Breadcrumbs -->
+            <nav class="text-xs text-slate-400 mb-4 font-mono">
+                <a href="index.html" class="hover:text-emerald-400 transition-colors">Home</a> &gt; 
+                <a href="#" class="hover:text-emerald-400 transition-colors capitalize">poly</a> &gt; 
+                <span class="text-white">10x13 Poly Mailer (T-Shirt)</span>
+            </nav>
+
+            <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Open Packaging Weight Calculator</h1>
+            <div class="flex items-center gap-2 mt-2">
+                <span class="bg-emerald-500 text-slate-900 text-xs font-bold px-2 py-0.5 rounded">CSRD & EPR READY</span>
+                <p class="text-slate-300 text-sm font-medium">Get instant compliance data for standard shipping packaging.</p>
+            </div>
+        </header>
+
+        <div class="p-6 md:p-8 space-y-8">
+            
+            <!-- Input Section -->
+            <section class="space-y-6">
+                <h2 class="text-lg font-semibold text-slate-800 border-b border-slate-100 pb-2">Packaging Details</h2>
+                
+                <!-- Box Type -->
+                <div>
+                    <label for="boxType" class="block text-sm font-medium text-slate-600 mb-1">Packaging Type</label>
+                    <div class="relative">
+                        <select id="boxType" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block p-2.5 appearance-none">
+                            <option value="single_wall" data-type="box" data-mat="PAP 20" data-gsm="450" data-recycled="70% (Industry Avg)" >Standard Shipping Box (Single Wall) - Corrugated</option>
+                            <option value="double_wall" data-type="box" data-mat="PAP 20" data-gsm="750" data-recycled="70% (Industry Avg)" >Heavy Duty Box (Double Wall) - Corrugated</option>
+                            <option value="kraft_mailer" data-type="envelope" data-mat="PAP 21" data-gsm="250" data-recycled="100% (Industry Avg)" >Kraft Mailer Envelope - Paperboard</option>
+                            <option value="poly_mailer" data-type="envelope" data-mat="LDPE 4" data-gsm="120" data-recycled="30% (Industry Avg)" selected>Poly Mailer Bag - LDPE</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dimensions & Units -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Dimensions -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-medium text-slate-600">Dimensions</label>
+                        <div class="flex space-x-2">
+                            <div class="flex-1">
+                                <input type="number" id="length" placeholder="L" value="10" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 text-sm" min="0" step="0.1">
+                                <span class="text-xs text-slate-400 ml-1">Length</span>
+                            </div>
+                            <div class="flex-1">
+                                <input type="number" id="width" placeholder="W" value="13" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 text-sm" min="0" step="0.1">
+                                <span class="text-xs text-slate-400 ml-1">Width</span>
+                            </div>
+                            <div class="flex-1 transition-opacity duration-300" id="heightContainer">
+                                <input type="number" id="height" placeholder="H" value="0.1" class="w-full bg-slate-50 border border-slate-300 p-2.5 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 text-sm" min="0" step="0.1">
+                                <span class="text-xs text-slate-400 ml-1">Height</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Unit Toggle -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-600 mb-3">Measurement Unit</label>
+                        <div class="flex items-center space-x-4 bg-slate-100 p-1 rounded-lg w-fit">
+                            <button id="btn-cm" class="px-4 py-1.5 text-sm font-medium rounded-md text-slate-500 hover:text-slate-700 transition-all">cm</button>
+                            <button id="btn-in" class="px-4 py-1.5 text-sm font-medium rounded-md bg-white shadow-sm text-slate-800 transition-all">inches</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Output Section -->
+            <section id="outputSection" class="bg-slate-850 rounded-xl p-6 text-white relative transition-all duration-300">
+                <!-- Overlay for Disabled State (Hidden by default since we pre-fill) -->
+                <div id="outputOverlay" class="absolute inset-0 z-10 hidden"></div>
+
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h3 class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">Estimated Weight</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span id="weightGrams" class="text-4xl font-bold">20</span>
+                            <span class="text-xl text-slate-400">g</span>
+                            <span class="text-slate-500 text-sm mx-2">/</span>
+                            <span id="weightKg" class="text-xl text-slate-300">0.020</span>
+                            <span class="text-slate-400 text-sm">kg</span>
+                        </div>
+                    </div>
+                    <button id="copyBtn" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-lg shadow-emerald-900/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Copy Data
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 border-t border-slate-700 pt-4">
+                    <div>
+                        <p class="text-slate-400 text-xs mb-1">Material Code</p>
+                        <p id="materialCode" class="font-mono text-lg text-white font-semibold">---</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-xs mb-1">Recycled Content (Est.)</p>
+                        <p id="recycledContent" class="text-lg text-white">---</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        
+        <!-- Footer -->
+        <footer class="bg-slate-100 p-4 text-center border-t border-slate-200">
+            <p class="text-xs text-slate-400 mt-2">Can't find your box? Submit details <a href="https://forms.gle/9tN5joJShbtxsqLQ7" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline">here</a>.</p>
+        </footer>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const boxTypeSelect = document.getElementById('boxType');
+        const lengthInput = document.getElementById('length');
+        const widthInput = document.getElementById('width');
+        const heightInput = document.getElementById('height');
+        const heightContainer = document.getElementById('heightContainer');
+        
+        const btnCm = document.getElementById('btn-cm');
+        const btnIn = document.getElementById('btn-in');
+        
+        const outputSection = document.getElementById('outputSection');
+        const outputOverlay = document.getElementById('outputOverlay');
+        const weightGramsEl = document.getElementById('weightGrams');
+        const weightKgEl = document.getElementById('weightKg');
+        const materialCodeEl = document.getElementById('materialCode');
+        const recycledContentEl = document.getElementById('recycledContent');
+        const copyBtn = document.getElementById('copyBtn');
+        const toast = document.getElementById('toast');
+
+        // State - Pre-set to inches as we are generating pages for US standard sizes
+        let currentUnit = 'in'; 
+
+        // Constants
+        const CM_TO_M = 0.01;
+        const IN_TO_M = 0.0254;
+
+        // Initialization
+        function init() {
+            addListeners();
+            // Ensure UI matches the 'in' state
+            btnIn.classList.remove('text-slate-500', 'hover:text-slate-700');
+            btnIn.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+            btnCm.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+            btnCm.classList.add('text-slate-500', 'hover:text-slate-700');
+            
+            handleBoxTypeChange(); // Ensure height box visibility is correct
+            calculate(); // Run to populate material codes etc based on the pre-selected option
+        }
+
+        function addListeners() {
+            // Inputs
+            [lengthInput, widthInput, heightInput].forEach(input => {
+                input.addEventListener('input', calculate);
+            });
+
+            // Dropdown
+            boxTypeSelect.addEventListener('change', (e) => {
+                handleBoxTypeChange();
+                calculate();
+            });
+
+            // Unit Toggles
+            btnCm.addEventListener('click', () => setUnit('cm'));
+            btnIn.addEventListener('click', () => setUnit('in'));
+
+            // Copy
+            copyBtn.addEventListener('click', copyToClipboard);
+        }
+
+        function setUnit(unit) {
+            currentUnit = unit;
+            if (unit === 'cm') {
+                btnCm.classList.remove('text-slate-500', 'hover:text-slate-700');
+                btnCm.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+                
+                btnIn.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+                btnIn.classList.add('text-slate-500', 'hover:text-slate-700');
+            } else {
+                btnIn.classList.remove('text-slate-500', 'hover:text-slate-700');
+                btnIn.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+                
+                btnCm.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+                btnCm.classList.add('text-slate-500', 'hover:text-slate-700');
+            }
+            calculate();
+        }
+
+        function handleBoxTypeChange() {
+            const selectedOption = boxTypeSelect.options[boxTypeSelect.selectedIndex];
+            const type = selectedOption.dataset.type;
+
+            if (type === 'envelope') {
+                heightInput.value = '';
+                heightInput.disabled = true;
+                heightContainer.style.opacity = '0.3';
+            } else {
+                heightInput.disabled = false;
+                heightContainer.style.opacity = '1';
+            }
+        }
+
+        function calculate() {
+            const selectedOption = boxTypeSelect.options[boxTypeSelect.selectedIndex];
+            const type = selectedOption.dataset.type; // 'box' or 'envelope'
+            const gsm = parseFloat(selectedOption.dataset.gsm);
+            const matCode = selectedOption.dataset.mat;
+            const recycled = selectedOption.dataset.recycled;
+
+            let l = parseFloat(lengthInput.value);
+            let w = parseFloat(widthInput.value);
+            let h = parseFloat(heightInput.value);
+
+            // Basic Validation
+            const isBox = type === 'box';
+            if (!l || !w || (isBox && !h && h !== 0)) { // Check if values exist. Note: h can be 0 if entered manually but usually >0
+                 if (isBox && isNaN(h)) {
+                    // If it is a box and H is missing, do not toggle output off if we already have static data? 
+                    // Actually, we want to update if user changes things.
+                    // But initially, inputs are populated.
+                 }
+            }
+
+            // If inputs are empty/invalid, we might want to hide output, BUT for this static site
+            // we start with valid data. If user clears it, we hide.
+            if (isNaN(l) || isNaN(w) || (isBox && isNaN(h))) {
+                toggleOutput(false);
+                return;
+            }
+
+
+            // Default H to 0 if not applicable
+            if (!isBox) h = 0;
+
+            // Convert to Meters
+            const factor = currentUnit === 'cm' ? CM_TO_M : IN_TO_M;
+            const l_m = l * factor;
+            const w_m = w * factor;
+            const h_m = h * factor;
+
+            // Surface Area Logic
+            let area_m2 = 0;
+            if (type === 'box') {
+                // 2(lw+lh+wh) * 1.25
+                // Note: logic matches python script
+                const baseArea = 2 * ((l_m * w_m) + (l_m * h_m) + (w_m * h_m));
+                area_m2 = baseArea * 1.25;
+            } else {
+                // (2 * L * W) + 10%
+                // Interpreted as front+back area + flap
+                area_m2 = (2 * l_m * w_m) * 1.10;
+            }
+
+            // Weight Calculation
+            const weight_g = area_m2 * gsm;
+            const weight_kg = weight_g / 1000;
+
+            // Update UI
+            updateOutput(weight_g, weight_kg, matCode, recycled);
+            toggleOutput(true);
+        }
+
+        function toggleOutput(active) {
+            if (active) {
+                outputSection.classList.remove('opacity-50', 'cursor-not-allowed');
+                outputOverlay.classList.add('hidden');
+            } else {
+                outputSection.classList.add('opacity-50', 'cursor-not-allowed');
+                outputOverlay.classList.remove('hidden');
+                
+                weightGramsEl.textContent = '0';
+                weightKgEl.textContent = '0.00';
+                materialCodeEl.textContent = '---';
+                recycledContentEl.textContent = '---';
+            }
+        }
+
+        function updateOutput(g, kg, code, rec) {
+            weightGramsEl.textContent = Math.round(g).toLocaleString();
+            weightKgEl.textContent = kg.toFixed(3);
+            materialCodeEl.textContent = code;
+            recycledContentEl.textContent = rec;
+        }
+
+        function copyToClipboard() {
+            const weightG = weightGramsEl.textContent;
+            const weightKg = weightKgEl.textContent;
+            const mat = materialCodeEl.textContent;
+            const rec = recycledContentEl.textContent;
+
+            const textToCopy = `Weight: ${weightG}g (${weightKg}kg)\tMaterial: ${mat}\tRecycled: ${rec}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast();
+            });
+        }
+
+        function showToast() {
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Run
+        init();
+
+    </script>
+</body>
+</html>

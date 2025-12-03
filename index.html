@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Packaging Data | CSRD Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen">
+
+    <!-- Hero Section -->
+    <header class="bg-slate-850 text-white border-b border-slate-700 relative">
+        <!-- Top Nav -->
+        <div class="absolute top-0 right-0 p-4">
+             <a href="https://forms.gle/9tN5joJShbtxsqLQ7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-1.5 border border-slate-600 text-sm font-medium rounded-md text-slate-200 bg-slate-800 hover:bg-slate-700 transition-colors shadow-sm hover:text-white">
+                ➕ Add Missing Box
+            </a>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 py-12 md:py-16 text-center">
+            <div class="inline-block mb-4 px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                Official Directory
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Open Packaging Data</h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                Free CSRD & EPR Weight Compliance Directory. Access standardized weight data for shipping materials instantly.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-lg mx-auto relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" 
+                    class="block w-full pl-10 pr-3 py-4 border border-transparent rounded-lg leading-5 bg-slate-700 text-white placeholder-slate-400 focus:outline-none focus:bg-slate-600 focus:border-slate-500 focus:ring-1 focus:ring-slate-500 sm:text-sm transition-all shadow-xl" 
+                    placeholder="Search standard box sizes (e.g., 'FedEx', 'Cube', 'Poly')...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 py-10">
+        
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-slate-800">Available Standards</h2>
+            <span class="text-sm text-slate-500" id="count">20 Records Found</span>
+        </div>
+
+        <!-- Grid -->
+        <div id="gridContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">#0 Kraft Bubble Mailer</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/#0-kraft-bubble-mailer-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">#2 Kraft Bubble Mailer</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/#2-kraft-bubble-mailer-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">#5 Kraft Bubble Mailer</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/#5-kraft-bubble-mailer-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">10X10X10 Cube</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/10x10x10-cube-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">10X13 Poly Mailer T Shirt</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/10x13-poly-mailer-t-shirt-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">12X12X12 Cube</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/12x12x12-cube-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">14 5X19 Poly Mailer Jacket</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/14-5x19-poly-mailer-jacket-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">18X18X18 Large</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/18x18x18-large-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">19X24 Poly Mailer Large</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/19x24-poly-mailer-large-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">4X4X4 Cube</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/4x4x4-cube-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">6X6X6 Cube</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/6x6x6-cube-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">8X8X8 Cube</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/8x8x8-cube-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">FedEx Extra Large Box</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/fedex-extra-large-box-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">FedEx Large Box</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/fedex-large-box-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">FedEx Medium Box</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/fedex-medium-box-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">FedEx Small Box</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/fedex-small-box-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">USPS Large Flat Rate</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/usps-large-flat-rate-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">USPS Medium Flat Rate Side</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/usps-medium-flat-rate-side-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">USPS Medium Flat Rate Top</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/usps-medium-flat-rate-top-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-item bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200 overflow-hidden flex flex-col">
+            <div class="p-5 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Verified Data
+                    </span>
+                    <svg class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 leading-tight">USPS Small Flat Rate</h3>
+                <p class="text-sm text-slate-500">Instant packaging weight calculation for CSRD compliance.</p>
+            </div>
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100">
+                <a href="pages/usps-small-flat-rate-weight-csrd.html" class="block w-full text-center text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
+                    View Data &rarr;
+                </a>
+            </div>
+        </div>
+        
+        </div>
+        
+        <!-- No Results State (Hidden by default) -->
+        <div id="noResults" class="hidden py-12 text-center">
+            <p class="text-slate-400 text-lg">No packaging formats found matching your search.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Open Packaging Data Project. All rights reserved.</p>
+            <p class="mt-2">Data provided for estimation purposes only. Not for legal trade use.</p>
+        </div>
+    </footer>
+
+    <!-- Search Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const gridContainer = document.getElementById('gridContainer');
+            const cards = document.querySelectorAll('.card-item');
+            const noResults = document.getElementById('noResults');
+            const countLabel = document.getElementById('count');
+            
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').innerText.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        card.style.display = ''; // Reset to default (flex/block)
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Update Counter
+                countLabel.innerText = visibleCount + ' Records Found';
+
+                // Show/Hide No Results
+                if (visibleCount === 0) {
+                    gridContainer.classList.add('hidden');
+                    noResults.classList.remove('hidden');
+                } else {
+                    gridContainer.classList.remove('hidden');
+                    noResults.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+    
