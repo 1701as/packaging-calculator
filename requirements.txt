@@ -3,3 +3,5 @@ reportlab
 python-dotenv
 streamlit
 google-genai
+gspread
+google-auth

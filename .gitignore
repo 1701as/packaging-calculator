@@ -1,5 +1,6 @@
 # Security
 .env
+tare-leads-213500e8660c.json
 
 # Python Bytecode
 __pycache__/
@@ -11,14 +12,14 @@ env/
 .venv/
 
 # IDE and Editor Files
-.vscode/        # VS Code settings
-.idea/          # IntelliJ IDEA settings
+.vscode/
+.idea/
 *.sublime-project
 *.sublime-workspace
 
 # OS Generated Files
-.DS_Store       # macOS
-Thumbs.db       # Windows
+.DS_Store
+Thumbs.db
 ehthumbs.db
 .directory
 
