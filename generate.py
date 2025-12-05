@@ -103,7 +103,7 @@ for item in data_sources:
     weight_kg = weight_g / 1000
     
     # Slugify name for filename
-    slug = item['name'].lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '-')
+    slug = item['name'].lower().replace('#', '').replace(' ', '-').replace('(', '').replace(')', '').replace('.', '-')
     filename = f"{slug}-weight-csrd.html"
     
     # SEO Title
