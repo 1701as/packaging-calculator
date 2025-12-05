@@ -79,10 +79,10 @@
                     <label for="boxType" class="block text-sm font-medium text-slate-600 mb-1">Packaging Type</label>
                     <div class="relative">
                         <select id="boxType" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block p-2.5 appearance-none">
-                            <option value="single_wall" data-type="box" data-mat="PAP 20" data-gsm="450" data-recycled="70% (Industry Avg)" >Standard Shipping Box (Single Wall) - Corrugated</option>
-                            <option value="double_wall" data-type="box" data-mat="PAP 20" data-gsm="750" data-recycled="70% (Industry Avg)" selected>Heavy Duty Box (Double Wall) - Corrugated</option>
-                            <option value="kraft_mailer" data-type="envelope" data-mat="PAP 21" data-gsm="250" data-recycled="100% (Industry Avg)" >Kraft Mailer Envelope - Paperboard</option>
-                            <option value="poly_mailer" data-type="envelope" data-mat="LDPE 4" data-gsm="120" data-recycled="30% (Industry Avg)" >Poly Mailer Bag - LDPE</option>
+                            <option value="single_wall" data-type="box" data-mat="PAP 20" data-gsm="450" data-recycled="70% (Industry Avg)" data-wall="single" >Standard Shipping Box (Single Wall) - Corrugated</option>
+                            <option value="double_wall" data-type="box" data-mat="PAP 20" data-gsm="750" data-recycled="70% (Industry Avg)" data-wall="double" selected>Heavy Duty Box (Double Wall) - Corrugated</option>
+                            <option value="kraft_mailer" data-type="envelope" data-mat="PAP 21" data-gsm="250" data-recycled="100% (Industry Avg)" data-wall="n/a" >Kraft Mailer Envelope - Paperboard</option>
+                            <option value="poly_mailer" data-type="envelope" data-mat="LDPE 4" data-gsm="120" data-recycled="30% (Industry Avg)" data-wall="n/a" >Poly Mailer Bag - LDPE</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -197,7 +197,7 @@
         const copyBtn = document.getElementById('copyBtn');
         const toast = document.getElementById('toast');
 
-        // State - Pre-set to inches as we are generating pages for US standard sizes
+        // State - currentUnit is set by the template for initial load
         let currentUnit = 'in'; 
 
         // Constants
@@ -207,11 +207,8 @@
         // Initialization
         function init() {
             addListeners();
-            // Ensure UI matches the 'in' state
-            btnIn.classList.remove('text-slate-500', 'hover:text-slate-700');
-            btnIn.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
-            btnCm.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
-            btnCm.classList.add('text-slate-500', 'hover:text-slate-700');
+            // Ensure UI matches the initial unit state
+            setUnit(currentUnit); // Call setUnit once to configure buttons correctly
             
             handleBoxTypeChange(); // Ensure height box visibility is correct
             calculate(); // Run to populate material codes etc based on the pre-selected option
@@ -310,14 +307,20 @@
             // Surface Area Logic
             let area_m2 = 0;
             if (type === 'box') {
-                // 2(lw+lh+wh) * 1.25
-                // Note: logic matches python script
+                const wallType = selectedOption.dataset.wall;
                 const baseArea = 2 * ((l_m * w_m) + (l_m * h_m) + (w_m * h_m));
-                area_m2 = baseArea * 1.25;
-            } else {
-                // (2 * L * W) + 10%
-                // Interpreted as front+back area + flap
-                area_m2 = (2 * l_m * w_m) * 1.10;
+                if (wallType === 'single') {
+                    area_m2 = baseArea * 1.25; // Single Wall Box: 1.25 factor
+                } else if (wallType === 'double') {
+                    area_m2 = baseArea * 1.35; // Double Wall Box: 1.35 factor
+                }
+            } else { // type is 'envelope'
+                // Differentiate between Poly Mailer and Kraft Mailer
+                if (selectedOption.value === 'poly_mailer') {
+                    area_m2 = (2 * l_m * w_m); // Poly Mailer: 2 faces, no additional flap factor
+                } else if (selectedOption.value === 'kraft_mailer') {
+                    area_m2 = (2 * l_m * w_m) * 1.10; // Kraft Mailer: 2 faces + 10% flap
+                }
             }
 
             // Weight Calculation
