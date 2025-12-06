@@ -1,0 +1,8 @@
+name = "tare-scanner-api"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+[[d1_databases]]
+binding = "tare_db"
+database_name = "tare-db"
+database_id = "09c5f774-1849-499f-8d54-0131f47107ef"
