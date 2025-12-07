@@ -101,7 +101,7 @@ def build_scanner():
     <script>
         // --- CONFIGURATION ---
         // REPLACE THIS URL WITH YOUR NEW WORKER URL
-        const WORKER_URL = "https://tare-scanner-api.1701as.workers.dev"; 
+        const WORKER_URL = "https://tare-scanner-api.20051701as.workers.dev"; 
 
         const fileInput = document.getElementById('fileInput');
         const uploadZone = document.getElementById('uploadZone');
