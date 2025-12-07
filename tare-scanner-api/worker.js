@@ -46,7 +46,7 @@ export default {
             const payload = {
               contents: [{
                 parts: [
-                  { text: "Extract packaging items (boxes, mailers) from this invoice. Return clean JSON list: [{name, dims, qty, category}]. Ignore products." },
+                  { text: "Analyze this invoice. Identify all packaging materials (boxes, mailers, tape, labels). Ignore the products being sold. Return a raw JSON list of objects with these keys: name, dims, qty, category. If dimensions are missing, put 'N/A'." },
                   { inline_data: { mime_type: file.type, data: base64String } }
                 ]
               }]
