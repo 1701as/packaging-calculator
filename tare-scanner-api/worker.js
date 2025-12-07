@@ -46,10 +46,13 @@ export default {
             const payload = {
               contents: [{
                 parts: [
-                  { text: "Analyze this invoice. Identify all packaging materials (boxes, mailers, tape, labels). Ignore the products being sold. Return a raw JSON list of objects with these keys: name, dims, qty, category. If dimensions are missing, put 'N/A'." },
+                  { text: "Analyze this invoice. Identify all packaging materials (boxes, mailers, tape, labels). Ignore the products being sold. Return a raw JSON list of objects with these keys: name, dims, qty, category. If dimensions are missing, put 'N/A'. Response must be a raw JSON array." },
                   { inline_data: { mime_type: file.type, data: base64String } }
                 ]
-              }]
+              }],
+              generationConfig: {
+                response_mime_type: "application/json"
+              }
             };
 
             const aiReq = await fetch(GEMINI_URL, {
