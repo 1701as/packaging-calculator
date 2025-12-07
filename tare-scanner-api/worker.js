@@ -18,8 +18,8 @@ export default {
         // SCENARIO A: Lead Opt-In (Email Only)
         // This runs when someone clicks "Notify Me" at the bottom
         if (email && !file) {
-           if (env.DB) {
-             await env.DB.prepare("INSERT INTO leads (email, created_at, source) VALUES (?, ?, 'opt_in')")
+           if (env.tare_db) {
+             await env.tare_db.prepare("INSERT INTO leads (email, created_at, source) VALUES (?, ?, 'opt_in')")
                .bind(email, new Date().toISOString())
                .run();
              return new Response(JSON.stringify({ success: true }), { headers: { "Content-Type": "application/json", ...corsHeaders } });
@@ -35,7 +35,13 @@ export default {
             const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${env.GEMINI_API_KEY}`;
             
             const arrayBuffer = await file.arrayBuffer();
-            const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+            let binary = '';
+            const bytes = new Uint8Array(arrayBuffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            const base64String = btoa(binary);
 
             const payload = {
               contents: [{
