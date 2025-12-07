@@ -64,10 +64,48 @@ export default {
             }
             
             // Safe parsing of the AI response
-            const text = aiRes.candidates?.[0]?.content?.parts?.[0]?.text || "[]";
-            const jsonStr = text.replace(/```json/g, "").replace(/```/g, "").trim();
+            const text = aiRes.candidates?.[0]?.content?.parts?.[0]?.text || "";
             
-            return new Response(jsonStr, { headers: { "Content-Type": "application/json", ...corsHeaders } });
+            // Try to find a JSON array in the text
+            const jsonMatch = text.match(/\[[\s\S]*\]/);
+            let jsonStr = jsonMatch ? jsonMatch[0] : "[]";
+
+            // If we couldn't find a JSON array, or if it's empty, we might want to know what the text was.
+            // We'll try to parse it to see if it's valid.
+            try {
+                const parsed = JSON.parse(jsonStr);
+                // Return the parsed object but WRAPPED so we can include debug info if needed.
+                // Note: The frontend expects a direct array, so we might break it if we change the shape.
+                // BUT the user is debugging. Let's return the raw array if valid, but if empty/invalid, 
+                // we might want to return an error object or the raw text in a special way?
+                
+                // User said "I'm still getting [] response". 
+                // Let's stick to returning the JSON but maybe we can log the raw text to the database if we had one?
+                // Or, let's temporarily return an object with { data: [...], debug: "..." } if the user allows changing frontend?
+                // The frontend does `data.map(...)` in `renderResults`. So it expects an Array.
+                // If I return `{ debug: ... }` it will crash the frontend map.
+                
+                // Strategy: If the array is empty, we force a "fake" item with the debug text so it shows up in the UI table.
+                if (parsed.length === 0 && text.length > 0) {
+                    return new Response(JSON.stringify([{
+                        name: "DEBUG: No items found", 
+                        dims: "Raw AI Response:", 
+                        qty: text.substring(0, 100) + "...", 
+                        category: "Debug"
+                    }]), { headers: { "Content-Type": "application/json", ...corsHeaders } });
+                }
+                
+                return new Response(jsonStr, { headers: { "Content-Type": "application/json", ...corsHeaders } });
+
+            } catch (e) {
+                 // If parsing fails, return the raw text as a debug item
+                 return new Response(JSON.stringify([{
+                    name: "Error Parsing JSON", 
+                    dims: "See Details", 
+                    qty: text.substring(0, 50), 
+                    category: "Error"
+                }]), { headers: { "Content-Type": "application/json", ...corsHeaders } });
+            }
         }
 
         return new Response("Invalid Request", { status: 400, headers: corsHeaders });
