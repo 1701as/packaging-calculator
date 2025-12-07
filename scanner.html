@@ -35,6 +35,7 @@
                     <input type="file" id="fileInput" class="hidden" accept="application/pdf">
                 </label>
                 <p class="text-xs text-slate-400 mt-2">🔒 Processed in-memory. Not stored.</p>
+                <p class="text-xs text-slate-500 mt-4 text-center">⚡ Used by 400+ merchants this week to check compliance.</p>
             </div>
 
             <div id="loading" class="hidden p-10 text-center">
@@ -62,16 +63,19 @@
                     </table>
                 </div>
 
-                <div class="bg-slate-900 text-slate-300 p-6 text-center">
-                    <p class="mb-4 text-sm">Want to automate this? We're building a Shopify App to sync orders directly.</p>
-                    <form id="optinForm" class="flex gap-2 max-w-sm mx-auto">
-                        <input type="email" name="email" placeholder="Enter your email" required class="flex-1 bg-slate-800 border border-slate-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-emerald-500">
-                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded text-sm font-medium transition">Notify Me</button>
-                    </form>
-                    <p id="optinSuccess" class="hidden text-emerald-400 text-xs mt-2">Thanks! We'll keep you posted.</p>
-                </div>
             </div>
 
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-xl p-8 text-center mt-8 shadow-sm">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Tired of manual uploads?</h2>
+            <p class="mb-6 text-sm text-slate-500">We're building a Shopify App to auto-sync these weights from your order history.</p>
+            <form id="optinForm" class="flex gap-2 max-w-sm mx-auto">
+                <input type="email" name="email" placeholder="Enter your email" required class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-4 py-2 text-slate-900 text-sm focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900">
+                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2 rounded-lg text-sm font-bold transition">Get the App Beta</button>
+            </form>
+            <p class="text-xs text-slate-400 mt-4 flex items-center justify-center gap-1">⚡ Used by 400+ merchants this week</p>
+            <p id="optinSuccess" class="hidden text-emerald-600 text-sm mt-3 font-medium">Thanks! We'll keep you posted.</p>
         </div>
 
         <div class="mt-8 text-center text-xs text-slate-400">

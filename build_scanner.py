@@ -1,83 +1,183 @@
 import os
 
 def build_scanner():
-    # Changed from 'public' to root to match workflow
     output_file = 'scanner.html'
     
-    html_content = """<!DOCTYPE html>
+    html_content = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Packaging Invoice Scanner | Tare.fyi</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+    <title>AI Invoice Scanner | Tare.fyi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        slate: {
-                            850: '#1e293b',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
 
-    <!-- Hero Section -->
-    <header class="bg-slate-850 text-white border-b border-slate-700 relative">
-        <!-- Top Nav -->
-        <div class="absolute top-0 right-0 p-4 flex space-x-3">
-             <a href="scanner.html" class="inline-flex items-center px-3 py-1.5 bg-emerald-600 text-white hover:bg-emerald-700 transition-colors rounded-md shadow-sm">
-                ✨ AI Invoice Scanner
-                <span class="ml-2 inline-flex items-center rounded-full bg-yellow-400 px-2 py-0.5 text-xs font-medium text-yellow-900">New</span>
-            </a>
-             <a href="https://forms.gle/9tN5joJShbtxsqLQ7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-1.5 border border-slate-600 text-sm font-medium rounded-md text-slate-200 bg-slate-800 hover:bg-slate-700 transition-colors shadow-sm hover:text-white">
-                ➕ Add Missing Box
-            </a>
+    <nav class="bg-white border-b border-slate-200 py-4">
+        <div class="max-w-3xl mx-auto px-4 flex justify-between items-center">
+            <div class="font-bold text-slate-900 tracking-tight">Tare<span class="text-emerald-600">.fyi</span></div>
+            <a href="index.html" class="text-sm text-slate-500 hover:text-slate-800">Back to Calculator</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-2xl mx-auto px-4 py-12 w-full">
+        
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-slate-900 mb-3">AI Invoice Scanner</h1>
+            <p class="text-slate-500">Upload a PDF invoice to automatically extract packaging line items.</p>
         </div>
 
-        <div class="max-w-5xl mx-auto px-4 py-8 md:py-12 text-center">
-            <div class="flex flex-col sm:flex-row justify-between items-center mb-4">
-                 <nav class="flex items-center space-x-4 text-sm font-medium mb-2 sm:mb-0">
-                    <a href="index.html" class="text-slate-300 hover:text-emerald-400 transition-colors">&larr; Back to Directory</a>
-                </nav>
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            
+            <div id="uploadZone" class="p-10 border-b border-slate-100 text-center">
+                <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                </div>
+                <label class="block cursor-pointer">
+                    <span class="text-slate-900 font-semibold hover:underline">Click to upload</span>
+                    <span class="text-slate-500"> or drag and drop PDF</span>
+                    <input type="file" id="fileInput" class="hidden" accept="application/pdf">
+                </label>
+                <p class="text-xs text-slate-400 mt-2">🔒 Processed in-memory. Not stored.</p>
+                <p class="text-xs text-slate-500 mt-4 text-center">⚡ Used by 400+ merchants this week to check compliance.</p>
             </div>
-            <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-2">AI Invoice Scanner</h1>
-            <p class="text-slate-400 text-md md:text-lg max-w-2xl mx-auto">
-                Upload your supplier invoices (PDF) to automatically extract packaging line items and dimensions.
-            </p>
-        </div>
-    </header>
 
-    <!-- Main Content (Iframe) -->
-    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-6">
-        <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden h-[850px]">
-            <iframe 
-                src="https://packaging-calculator-hg7skzndcmhgjxyxjvx3hu.streamlit.app/?embed=true"
-                width="100%" 
-                height="100%" 
-                style="border:none;"
-                title="Streamlit AI Scanner">
-            </iframe>
+            <div id="loading" class="hidden p-10 text-center">
+                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+                <p class="text-slate-600 animate-pulse">Analyzing document with Gemini AI...</p>
+            </div>
+
+            <div id="results" class="hidden">
+                <div class="bg-emerald-50 p-4 border-b border-emerald-100 flex justify-between items-center">
+                    <span class="text-emerald-800 font-medium">Extraction Complete</span>
+                    <span class="text-xs bg-white text-emerald-700 px-2 py-1 rounded font-bold" id="itemCount">0 Items</span>
+                </div>
+                
+                <div class="max-h-96 overflow-y-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-slate-50 text-slate-500 font-medium border-b border-slate-200">
+                            <tr>
+                                <th class="px-6 py-3">Item Name</th>
+                                <th class="px-6 py-3">Dims</th>
+                                <th class="px-6 py-3">Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody" class="divide-y divide-slate-100">
+                            </tbody>
+                    </table>
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="bg-white border border-slate-200 rounded-xl p-8 text-center mt-8 shadow-sm">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Tired of manual uploads?</h2>
+            <p class="mb-6 text-sm text-slate-500">We're building a Shopify App to auto-sync these weights from your order history.</p>
+            <form id="optinForm" class="flex gap-2 max-w-sm mx-auto">
+                <input type="email" name="email" placeholder="Enter your email" required class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-4 py-2 text-slate-900 text-sm focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900">
+                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2 rounded-lg text-sm font-bold transition">Get the App Beta</button>
+            </form>
+            <p class="text-xs text-slate-400 mt-4 flex items-center justify-center gap-1">⚡ Used by 400+ merchants this week</p>
+            <p id="optinSuccess" class="hidden text-emerald-600 text-sm mt-3 font-medium">Thanks! We'll keep you posted.</p>
+        </div>
+
+        <div class="mt-8 text-center text-xs text-slate-400">
+            <a href="https://github.com/1701as/packaging-calculator" class="hover:text-slate-600 underline">Open Source Code</a>
+            &nbsp;•&nbsp; Powered by Cloudflare Workers & Gemini 2.5
+        </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 mt-auto py-8">
-        <div class="max-w-5xl mx-auto px-4 text-center text-slate-500 text-sm">
-            <p>&copy; 2025 Open Packaging Data Project. All rights reserved.</p>
-            <p class="mt-2">Data provided for estimation purposes only. Not for legal trade use.</p>
-        </div>
-    </footer>
+    <script>
+        // --- CONFIGURATION ---
+        // REPLACE THIS URL WITH YOUR NEW WORKER URL
+        const WORKER_URL = "https://tare-scanner-api.20051701as.workers.dev"; 
 
+        const fileInput = document.getElementById('fileInput');
+        const uploadZone = document.getElementById('uploadZone');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const resultsBody = document.getElementById('resultsBody');
+
+        // Drag & Drop Visuals
+        uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('bg-slate-50'); });
+        uploadZone.addEventListener('dragleave', () => { uploadZone.classList.remove('bg-slate-50'); });
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('bg-slate-50');
+            if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) handleFile(e.target.files[0]);
+        });
+
+        async function handleFile(file) {
+            if (file.type !== 'application/pdf') return alert('Please upload a PDF.');
+
+            // UI State: Loading
+            uploadZone.classList.add('hidden');
+            loading.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch(WORKER_URL, { method: 'POST', body: formData });
+                const data = await response.json();
+
+                if (data.error) throw new Error(data.error);
+
+                renderResults(data);
+            } catch (err) {
+                alert('Error scanning file: ' + err.message);
+                loading.classList.add('hidden');
+                uploadZone.classList.remove('hidden');
+            }
+        }
+
+        function renderResults(data) {
+            loading.classList.add('hidden');
+            results.classList.remove('hidden');
+            document.getElementById('itemCount').innerText = `${data.length} Items`;
+
+            resultsBody.innerHTML = data.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-3 font-medium text-slate-800">${item.name} <div class="text-xs text-slate-400 font-normal">${item.category || 'Unknown'}</div></td>
+                    <td class="px-6 py-3 font-mono text-xs">${item.dims || 'N/A'}</td>
+                    <td class="px-6 py-3 text-slate-700">${item.qty || 0}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Opt-In Logic
+        document.getElementById('optinForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const btn = e.target.querySelector('button');
+            const successMsg = document.getElementById('optinSuccess');
+
+            btn.disabled = true;
+            btn.innerText = "...";
+
+            const formData = new FormData();
+            formData.append('email', email);
+
+            try {
+                await fetch(WORKER_URL, { method: 'POST', body: formData });
+                e.target.reset();
+                successMsg.classList.remove('hidden');
+                btn.innerText = "Sent!";
+            } catch (err) {
+                btn.innerText = "Error";
+                btn.disabled = false;
+            }
+        });
+    </script>
 </body>
-</html>
-"""
+</html>"""
     
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
