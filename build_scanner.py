@@ -83,12 +83,20 @@ def build_scanner():
             <p id="optinSuccess" class="hidden text-emerald-600 text-sm mt-3 font-medium">Thanks! We'll keep you posted.</p>
         </div>
 
-        <div class="mt-8 text-center text-xs text-slate-400">
-            <a href="https://github.com/1701as/packaging-calculator" class="hover:text-slate-600 underline">Open Source Code</a>
-            &nbsp;•&nbsp; Powered by Cloudflare Workers & Gemini 2.5
-        </div>
-
     </main>
+
+    <footer class="bg-slate-50 border-t border-slate-200 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Open Packaging Data Project. All rights reserved.</p>
+            <p class="mt-2">Data provided for estimation purposes only. Not for legal trade use.</p>
+            <p class="mt-2 text-xs text-slate-400">Powered by Cloudflare Workers & Gemini 2.5</p>
+            <div class="mt-4 flex justify-center gap-4">
+                <a href="https://github.com/1701as/packaging-calculator" class="hover:text-slate-700 underline transition-colors">Open Source Code</a>
+                <span>•</span>
+                <a href="mailto:admin@tare.fyi" class="hover:text-slate-700 underline transition-colors">Feedback</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // --- CONFIGURATION ---
