@@ -32,7 +32,7 @@ export default {
         // This runs when they upload a PDF
         if (file) {
             // We use the REST API directly to keep the worker lightweight (no heavy Python SDKs)
-            const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${env.GEMINI_API_KEY}`;
+            const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`;
             
             const arrayBuffer = await file.arrayBuffer();
             let binary = '';
@@ -58,6 +58,10 @@ export default {
               body: JSON.stringify(payload)
             });
             const aiRes = await aiReq.json();
+
+            if (aiRes.error) {
+                return new Response(JSON.stringify({ error: "AI Error: " + aiRes.error.message }), { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } });
+            }
             
             // Safe parsing of the AI response
             const text = aiRes.candidates?.[0]?.content?.parts?.[0]?.text || "[]";
