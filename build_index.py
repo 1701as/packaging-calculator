@@ -91,9 +91,9 @@ def build_index():
             <div class="inline-block mb-4 px-3 py-1 rounded-full bg-slate-700 border border-slate-600 text-xs font-semibold text-emerald-400 uppercase tracking-wider">
                 Official Directory
             </div>
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Open Packaging Data</h1>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">LUCID Forecast for 2026 is due Dec 31st.</h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-                Free CSRD & EPR Weight Compliance Directory. Access standardized weight data for shipping materials instantly.
+                Don't guess your Planned Volumes. Calculate exact compliance weights for DHL, Royal Mail & Colissimo in seconds.
             </p>
             
             <!-- Search Bar -->
