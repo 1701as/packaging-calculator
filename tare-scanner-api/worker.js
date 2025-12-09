@@ -1,4 +1,5 @@
 export default {
+  // v2: Logging fixed
   async fetch(request, env) {
     // 1. CORS Headers (Allow your site to talk to this)
     const corsHeaders = {
