@@ -283,6 +283,7 @@
 
         // State - currentUnit is set by the template for initial load
         let currentUnit = 'in'; 
+        const pageBoxName = "FedEx Extra Large Box";
 
         // Constants
         const CM_TO_M = 0.01;
@@ -492,7 +493,8 @@
 
             // Log the calculation (Fire and forget, debounced)
             logCalculation({
-                box_name: selectedOption.text,
+                box_name: pageBoxName,
+                packaging_type: boxTypeSelect.value, // Use the raw value as short type
                 l: l,
                 w: w,
                 h: h,
