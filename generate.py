@@ -64,6 +64,25 @@ data_sources = [
     {"name": "RAJA Single Wall (Ref 2)", "l": 30.0, "w": 20.0, "h": 15.0, "type": "box_single", "wall": "single", "unit": "cm"},
     {"name": "RAJA Double Wall (Heavy)", "l": 40.0, "w": 30.0, "h": 20.0, "type": "box_double", "wall": "double", "unit": "cm"},
     {"name": "RAJA Long Box (Posters)", "l": 61.0, "w": 10.5, "h": 10.5, "type": "box_single", "wall": "single", "unit": "cm"},
+
+    # --- Product-Specific Standards (Use Case SEO) ---
+    # Shoeboxes
+    {"name": "Sneaker Box (Standard)", "l": 13.0, "w": 9.0, "h": 5.0, "type": "box_single", "wall": "single", "unit": "in"},
+    {"name": "Boot Box (Large)", "l": 16.0, "w": 12.0, "h": 6.0, "type": "box_single", "wall": "single", "unit": "in"},
+
+    # Media & Books
+    {"name": "Vinyl Record Mailer (12-inch LP)", "l": 13.0, "w": 13.0, "h": 1.0, "type": "box_single", "wall": "single", "unit": "in"},
+    {"name": "Book Wrap (Standard Paperback)", "l": 24.0, "w": 17.0, "h": 5.0, "type": "box_single", "wall": "single", "unit": "cm"}, # Common EU format
+    {"name": "Poster Tube (24-inch)", "l": 24.0, "w": 3.0, "h": 3.0, "type": "box_double", "wall": "double", "unit": "in"},
+
+    # Fragile / Retail
+    {"name": "Mug Box (11oz Standard)", "l": 5.0, "w": 5.0, "h": 5.0, "type": "box_double", "wall": "double", "unit": "in"}, # Double wall for protection
+    {"name": "Olive Oil Bottle Shipper (Single)", "l": 4.0, "w": 4.0, "h": 13.0, "type": "box_double", "wall": "double", "unit": "in"},
+    {"name": "Candle Box (Standard Jar)", "l": 4.0, "w": 4.0, "h": 4.0, "type": "box_single", "wall": "single", "unit": "in"},
+
+    # Apparel
+    {"name": "Cap/Hat Box", "l": 8.0, "w": 8.0, "h": 6.0, "type": "box_single", "wall": "single", "unit": "in"},
+    {"name": "Jeans/Denim Mailer Box", "l": 12.0, "w": 10.0, "h": 2.0, "type": "box_single", "wall": "single", "unit": "in"},
 ]
 
 # Setup Jinja2 Environment
@@ -126,7 +145,7 @@ for item in data_sources:
     weight_kg = weight_g / 1000
     
     # Slugify name for filename
-    slug = item['name'].lower().replace('#', '').replace(' ', '-').replace('(', '').replace(')', '').replace('.', '-')
+    slug = item['name'].lower().replace('#', '').replace(' ', '-').replace('(', '').replace(')', '').replace('.', '-').replace('/', '-')
     filename = f"{slug}-weight-csrd.html"
     
     # SEO Title
