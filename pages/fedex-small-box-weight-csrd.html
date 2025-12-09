@@ -257,6 +257,7 @@
     </div>
 
     <script>
+        console.log("Popup script loaded");
         // DOM Elements
         const boxTypeSelect = document.getElementById('boxType');
         const lengthInput = document.getElementById('length');
@@ -325,11 +326,21 @@
             const modalDismissBtn = document.getElementById('modalDismissBtn');
             const modalCtaBtn = document.getElementById('modalCtaBtn');
 
+            // Debugging: Check ID
+            const debugModalEl = document.getElementById('leadGenModal');
+            if (debugModalEl) {
+                console.log("Popup element found:", debugModalEl);
+            } else {
+                console.error("Error: Popup element not found with ID 'leadGenModal'");
+            }
+
             // Show Modal Logic
             setTimeout(() => {
+                console.log("Timer fired"); // Check Trigger
                 const hasSeenModal = localStorage.getItem('hasSeenLeadGenModal');
                 if (!hasSeenModal) {
                     modal.classList.remove('hidden');
+                    modal.classList.add('flex'); // Add flex to make it appear
                     // Small delay to allow display:block to apply before opacity transition
                     setTimeout(() => {
                         modal.classList.remove('opacity-0');
@@ -345,6 +356,7 @@
                 modalContent.classList.add('scale-95');
                 setTimeout(() => {
                     modal.classList.add('hidden');
+                    modal.classList.remove('flex'); // Also remove flex when hidden
                 }, 300);
                 localStorage.setItem('hasSeenLeadGenModal', 'true');
             }
