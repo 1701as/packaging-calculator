@@ -17,14 +17,16 @@ export default {
         // --- NEW: Log Calculation Route ---
         if (url.pathname === "/log-calculation") {
             const body = await request.json();
-            const { box_name, packaging_type, l, w, h, unit, weight_grams, qty } = body;
-            // Format dimensions string
-            const dimensions = `${l}x${w}x${h} ${unit}`;
+            const { box_name, l, w, h, unit, weight_grams, qty } = body;
+            
+            // Construct the dimensions string safely
+            const dimensions = `${l}x${w}x${h || 0} ${unit}`;
+            const timestamp = new Date().toISOString();
             
             if (env.tare_db) {
                 await env.tare_db.prepare(
-                    "INSERT INTO usage_logs (box_name, packaging_type, dimensions, weight_grams, qty, timestamp) VALUES (?, ?, ?, ?, ?, ?)"
-                ).bind(box_name, packaging_type, dimensions, weight_grams, qty, new Date().toISOString()).run();
+                    "INSERT INTO usage_logs (box_name, dimensions, weight_grams, qty, timestamp) VALUES (?, ?, ?, ?, ?)"
+                ).bind(box_name, dimensions, weight_grams, qty, timestamp).run();
             }
             return new Response("OK", { status: 200, headers: corsHeaders });
         }
