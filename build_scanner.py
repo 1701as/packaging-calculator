@@ -17,7 +17,7 @@ def build_scanner():
     <nav class="bg-white border-b border-slate-200 py-4">
         <div class="max-w-3xl mx-auto px-4 flex justify-between items-center">
             <div class="font-bold text-slate-900 tracking-tight">Tare<span class="text-emerald-600">.fyi</span></div>
-            <a href="index.html" class="text-sm text-slate-500 hover:text-slate-800">Back to Calculator</a>
+            <a href="/" class="text-sm text-slate-500 hover:text-slate-800">Back to Calculator</a>
         </div>
     </nav>
 
