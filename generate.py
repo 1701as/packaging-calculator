@@ -83,6 +83,18 @@ data_sources = [
     # Apparel
     {"name": "Cap/Hat Box", "l": 8.0, "w": 8.0, "h": 6.0, "type": "box_single", "wall": "single", "unit": "in"},
     {"name": "Jeans/Denim Mailer Box", "l": 12.0, "w": 10.0, "h": 2.0, "type": "box_single", "wall": "single", "unit": "in"},
+
+    # --- Artisan & Handmade (Etsy Niche) ---
+    # Beauty & Scent
+    {"name": "Soap Bar Box (Standard)", "l": 3.5, "w": 2.5, "h": 1.5, "type": "box_single", "wall": "single", "unit": "in"},
+    {"name": "Perfume Bottle Box (Tall)", "l": 3.0, "w": 3.0, "h": 6.0, "type": "box_single", "wall": "single", "unit": "in"},
+
+    # Jewelry & Accessories
+    {"name": "Jewelry Shipping Box (Small)", "l": 6.0, "w": 4.0, "h": 2.0, "type": "box_single", "wall": "single", "unit": "in"}, # Indestructo style
+    
+    # Art & Stationery
+    {"name": "Picture Frame Mailer (8x10)", "l": 13.0, "w": 10.0, "h": 2.0, "type": "box_single", "wall": "single", "unit": "in"},
+    {"name": "Stationery Box (A5 Shallow)", "l": 9.0, "w": 6.5, "h": 1.0, "type": "box_single", "wall": "single", "unit": "in"},
 ]
 
 # Setup Jinja2 Environment
